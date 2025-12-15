@@ -25,7 +25,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li><a href="product-details.html">Book<i class="fa fa-angle-down"></i></a>
+                            <li><a href="${pageContext.request.contextPath}/view/user/book.jsp">Book<i class="fa fa-angle-down"></i></a>
                                 <div class="mega-menu">
                                     <span>
                                         <a href="#" class="title">Jackets</a>
