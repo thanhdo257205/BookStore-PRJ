@@ -5,6 +5,7 @@
 
 package controller;
 
+import dal.CategoryDAO;
 import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,8 +15,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Category;
 import model.Product;
 
 /**
@@ -60,12 +63,18 @@ public class Home extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         try {
-            List<Product> list = new ProductDAO().findAll();
-            request.setAttribute("listProduct", list);
+            List<Product> listProduct = new ProductDAO().findAll();
+            request.setAttribute("listProduct", listProduct);
+            Map<String, Integer> listCategory = new CategoryDAO().findCategoryQuantity();
+            request.setAttribute("listCategory", listCategory);
             request.getRequestDispatcher("view/user/home.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private List<Category> getCategory() {
+        return new CategoryDAO().findAll();
     } 
 
     /** 

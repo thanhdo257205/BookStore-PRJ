@@ -96,10 +96,9 @@
                                 </div>
                                 <div class="left-menu mb-30">
                                     <ul>
-                                        <li><a href="#">Jackets<span>(15)</span></a></li>
-                                        <li><a href="#">weaters<span>(9)</span></a></li>
-                                        <li><a href="#">Bottoms<span>(12)</span></a></li>
-                                        <li><a href="#">Jeans Pants<span>(6)</span></a></li>
+                                        <c:forEach var="category" items="${listCategory}">
+                                            <li><a href="#">${category.key}<span>${category.value}</span></a></li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                                 <div class="left-title mb-20">

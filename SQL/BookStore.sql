@@ -54,3 +54,14 @@ SELECT [id]
 
 
 
+select p.categoryId, c.name, sum(p.quantity) as sum_quantity from Product p
+join Category c on c.id = p.categoryId
+group by p.categoryId, c.name
+
+
+SELECT [id]
+      ,[name]
+  FROM [dbo].[Category]
+
+
+
