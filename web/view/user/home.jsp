@@ -32,6 +32,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.css">
         <!-- font-awesome css -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- flexslider.css-->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexslider.css">
         <!-- chosen.min.css-->
@@ -96,57 +97,57 @@
                                 </div>
                                 <div class="left-menu mb-30">
                                     <ul>
-                                        <c:forEach var="category" items="${listCategory}">
-                                            <li><a href="#">${category.key}<span>${category.value}</span></a></li>
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                                <div class="left-title mb-20">
-                                    <h4>Color</h4>
-                                </div>
-                                <div class="color-menu mb-30">
-                                    <ul class="color">
-                                        <li><a href="#"></a></li>
-                                        <li><a href="#" class="bg-2"></a></li>
-                                        <li><a href="#" class="bg-3"></a></li>
-                                        <li><a href="#" class="bg-4"></a></li>
-                                    </ul>
-                                </div>
-                                <div class="left-title mb-20">
-                                    <h4>Manufacturer</h4>
-                                </div>
-                                <div class="left-menu mb-30">
-                                    <ul>
-                                        <li><a href="#">Adidas<span>(4)</span></a></li>
-                                        <li><a href="#">Chanel<span>(7)</span></a></li>
-                                        <li><a href="#">DKNY <span>(3)</span></a></li>
-                                        <li><a href="#">Dolce<span>(3)</span></a></li>
-                                        <li><a href="#">Gabbana<span>(2)</span></a></li>
-                                        <li><a href="#">Nike<span>(3)</span></a></li>
-                                        <li><a href="#">Other <span>(1)</span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="left-title mb-20">
-                                    <h4>Price</h4>
-                                </div>
-                                <div class="left-menu mb-30">
-                                    <ul>
-                                        <li><a href="#">$0.00-$9.99<span>(1)</span></a></li>
-                                        <li><a href="#">$30.00-$39.99<span>(11)</span></a></li>
-                                        <li><a href="#">$40.00-$49.99<span>(2)</span></a></li>
-                                        <li><a href="#">$50.00-$59.99<span>(3)</span></a></li>
-                                        <li><a href="#">$70.00-and above<span>(1)</span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="left-title mb-20">
-                                    <h4>Random</h4>
-                                </div>
-                                <div class="random-area mb-30">
-                                    <div class="product-active-2 owl-carousel">
-                                        <div class="product-total-2">
-                                            <div class="single-most-product bd mb-18">
-                                                <div class="most-product-img">
-                                                    <a href="#"><img src="${pageContext.request.contextPath}/img/product/20.jpg" alt="book" /></a>
+                                    <c:forEach var="category" items="${listCategory}">
+                                        <li><a href="#">${category.key}<span>${category.value}</span></a></li>
+                                                </c:forEach>
+                                </ul>
+                            </div>
+                            <div class="left-title mb-20">
+                                <h4>Color</h4>
+                            </div>
+                            <div class="color-menu mb-30">
+                                <ul class="color">
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#" class="bg-2"></a></li>
+                                    <li><a href="#" class="bg-3"></a></li>
+                                    <li><a href="#" class="bg-4"></a></li>
+                                </ul>
+                            </div>
+                            <div class="left-title mb-20">
+                                <h4>Manufacturer</h4>
+                            </div>
+                            <div class="left-menu mb-30">
+                                <ul>
+                                    <li><a href="#">Adidas<span>(4)</span></a></li>
+                                    <li><a href="#">Chanel<span>(7)</span></a></li>
+                                    <li><a href="#">DKNY <span>(3)</span></a></li>
+                                    <li><a href="#">Dolce<span>(3)</span></a></li>
+                                    <li><a href="#">Gabbana<span>(2)</span></a></li>
+                                    <li><a href="#">Nike<span>(3)</span></a></li>
+                                    <li><a href="#">Other <span>(1)</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="left-title mb-20">
+                                <h4>Price</h4>
+                            </div>
+                            <div class="left-menu mb-30">
+                                <ul>
+                                    <li><a href="#">$0.00-$9.99<span>(1)</span></a></li>
+                                    <li><a href="#">$30.00-$39.99<span>(11)</span></a></li>
+                                    <li><a href="#">$40.00-$49.99<span>(2)</span></a></li>
+                                    <li><a href="#">$50.00-$59.99<span>(3)</span></a></li>
+                                    <li><a href="#">$70.00-and above<span>(1)</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="left-title mb-20">
+                                <h4>Random</h4>
+                            </div>
+                            <div class="random-area mb-30">
+                                <div class="product-active-2 owl-carousel">
+                                    <div class="product-total-2">
+                                        <div class="single-most-product bd mb-18">
+                                            <div class="most-product-img">
+                                                <a href="#"><img src="${pageContext.request.contextPath}/img/product/20.jpg" alt="book" /></a>
                                             </div>
                                             <div class="most-product-content">
                                                 <div class="product-rating">
