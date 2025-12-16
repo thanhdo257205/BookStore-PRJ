@@ -5,7 +5,6 @@
 
 package controller;
 
-import dal.CategoryDAO;
 import dal.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,19 +12,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.Category;
 import model.Product;
 
 /**
  *
  * @author dotha
  */
-public class Home extends HttpServlet {
+public class BookInfomation extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -42,10 +35,10 @@ public class Home extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Home</title>");  
+            out.println("<title>Servlet BookInfomation</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Home at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet BookInfomation at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,19 +55,9 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        try {
-            List<Product> listProduct = new ProductDAO().findAll();
-            request.getSession().setAttribute("listProduct", listProduct);
-            Map<String, Integer> listCategory = new CategoryDAO().findCategoryQuantity();
-            request.getSession().setAttribute("listCategory", listCategory);
-            request.getRequestDispatcher("view/user/home.jsp").forward(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    private List<Category> getCategory() {
-        return new CategoryDAO().findAll();
+        Product product = getBook(request, response);
+        request.setAttribute("product", product);
+        request.getRequestDispatcher("view/user/book.jsp").forward(request, response);
     }
 
     /** 
@@ -98,5 +81,11 @@ public class Home extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private Product getBook(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Product p = new ProductDAO().findById(id);
+        return p;
+    }
 
 }

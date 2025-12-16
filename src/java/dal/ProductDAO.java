@@ -38,7 +38,7 @@ public class ProductDAO extends DBContext {
             float price = resultSet.getFloat("price");
             String des = resultSet.getString("description");
             int categoryId = resultSet.getInt("categoryId");
-            
+
             Product p = Product.builder()
                     .id(id)
                     .name(name)
@@ -52,7 +52,45 @@ public class ProductDAO extends DBContext {
         }
         return list;
     }
-    
+
+    public Product findById(int id) {
+        String sql = "SELECT [id]\n"
+                + "      ,[name]\n"
+                + "      ,[image]\n"
+                + "      ,[quantity]\n"
+                + "      ,[price]\n"
+                + "      ,[description]\n"
+                + "      ,[categoryId]\n"
+                + "  FROM [dbo].[Product]\n"
+                + "  WHERE id = ?";
+        try {
+            statement = getConnection().prepareStatement(sql);
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                float price = resultSet.getFloat("price");
+                String description = resultSet.getString("description");
+                int categoryId = resultSet.getInt("categoryId");
+                Product p = Product.builder()
+                        .id(id)
+                        .name(name)
+                        .image(image)
+                        .description(description)
+                        .quantity(quantity)
+                        .categoryId(categoryId)
+                        .price(price)
+                        .build();
+                return p;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         try {
             for (Product p : new ProductDAO().findAll()) {

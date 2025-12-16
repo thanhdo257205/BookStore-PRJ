@@ -14,7 +14,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Koparion – Book Shop HTML5 Template</title>
+        <title>Book Shop</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -348,7 +348,7 @@
                             <div class="tab-pane fade show active" id="th">
                                 <div class="row">
                                     <c:forEach var="product" items="${listProduct}">
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 infomation-book" data-id="${product.id}">
                                             <!-- single-product-start -->
                                             <div class="product-wrapper mb-40">
                                                 <div class="product-img">
@@ -746,9 +746,13 @@
 
         <!-- all js here -->
         <!-- jquery latest version -->
+        <script>
+            const contextPath = '${pageContext.request.contextPath}';
+        </script>
         <script src="${pageContext.request.contextPath}/js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/vendor/jquery-1.12.4.min.js"></script>
 
+        <script src="${pageContext.request.contextPath}/js/myscript.js"></script>
 
         <!-- bootstrap js -->
         <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
