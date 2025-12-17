@@ -91,6 +91,75 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
+    public List<Product> findProductByName(String name) {
+        List<Product> listProduct = new ArrayList<>();
+        String sql = "SELECT * FROM Product\n"
+                + "WHERE name LIKE ?";
+        try {
+            statement = getConnection().prepareStatement(sql);
+            statement.setString(1, "%" + name + "%");
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String namemain = resultSet.getString("name");
+                int id = resultSet.getInt("id");
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                float price = resultSet.getFloat("price");
+                String description = resultSet.getString("description");
+                int categoryId = resultSet.getInt("categoryId");
+                Product p = Product.builder()
+                        .id(id)
+                        .name(namemain)
+                        .image(image)
+                        .description(description)
+                        .quantity(quantity)
+                        .categoryId(categoryId)
+                        .price(price)
+                        .build();
+                listProduct.add(p);
+            }
+            return listProduct;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public List<Product> findByCategory(String categoryName) {
+        List<Product> listProduct = new ArrayList<>();
+        String sql = "SELECT * FROM Product p\n"
+                + "join Category c on c.id = p.categoryId\n"
+                + "WHERE C.name = ?";
+        try {
+            statement = getConnection().prepareStatement(sql);
+            statement.setString(1, categoryName);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String image = resultSet.getString("image");
+                int quantity = resultSet.getInt("quantity");
+                float price = resultSet.getFloat("price");
+                String description = resultSet.getString("description");
+                int categoryId = resultSet.getInt("categoryId");
+                Product p = Product.builder()
+                        .id(id)
+                        .name(name)
+                        .image(image)
+                        .description(description)
+                        .quantity(quantity)
+                        .categoryId(categoryId)
+                        .price(price)
+                        .build();
+                listProduct.add(p);
+            }
+            return listProduct;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         try {
             for (Product p : new ProductDAO().findAll()) {

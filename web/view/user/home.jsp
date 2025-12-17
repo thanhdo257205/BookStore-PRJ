@@ -10,7 +10,7 @@
 <html class="no-js" lang="en">
 
 
-    <!-- Mirrored from htmldemo.net/koparion/koparion/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2024 17:30:51 GMT -->
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -98,7 +98,7 @@
                                 <div class="left-menu mb-30">
                                     <ul>
                                     <c:forEach var="category" items="${listCategory}">
-                                        <li><a href="#">${category.key}<span>${category.value}</span></a></li>
+                                        <li class="category-class"><a href="Home?action=category&name=${category.key}" data-name="${category.key}">${category.key}<span>${category.value}</span></a></li>
                                                 </c:forEach>
                                 </ul>
                             </div>
@@ -748,6 +748,16 @@
         <!-- jquery latest version -->
         <script>
             const contextPath = '${pageContext.request.contextPath}';
+
+            let search = document.querySelector("#search");
+
+            if (search) {
+                search.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    let form = this.closest("form");
+                    form.submit();
+                });
+            }
         </script>
         <script src="${pageContext.request.contextPath}/js/vendor/modernizr-2.8.3.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/vendor/jquery-1.12.4.min.js"></script>
@@ -781,5 +791,5 @@
     </body>
 
 
-    <!-- Mirrored from htmldemo.net/koparion/koparion/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2024 17:30:52 GMT -->
+
 </html>

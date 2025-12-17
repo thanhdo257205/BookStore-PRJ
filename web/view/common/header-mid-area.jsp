@@ -10,15 +10,16 @@
         <div class="row navagitonal">
             <div class="col-lg-3 col-md-5 col-12">
                 <div class="header-search">
-                    <form action="#">
-                        <input type="text" placeholder="Search entire store here..." />
-                        <a href="#"><i class="fa fa-search"></i></a>
+                    <form action="Home" method="get">
+                        <input type="hidden" name="action" value="search">
+                        <input type="text" name="keyword" placeholder="Search entire store here..." />
+                        <a href="#" id="search"><i class="fa fa-search"></i></a>
                     </form>
                 </div>
             </div>
             <div class="col-lg-6 col-md-4 col-12">
                 <div class="logo-area text-center logo-xs-mrg">
-                    <a href="index.html" id="logo-mid"><img src="${pageContext.request.contextPath}/img/logo/2.png" alt="logo" /></a>
+                    <a href="Home" id="logo-mid"><img src="${pageContext.request.contextPath}/img/logo/2.png" alt="logo" /></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-12">
