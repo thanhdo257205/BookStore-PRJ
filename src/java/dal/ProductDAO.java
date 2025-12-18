@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Product;
-import lombok.Builder;
+import model.Constant;
 
 /**
  *
@@ -18,7 +18,7 @@ import lombok.Builder;
  */
 public class ProductDAO extends DBContext {
 
-    public List<Product> findAll() throws SQLException {
+    public List<Product> findAll(int page) throws SQLException {
         List<Product> list = new ArrayList<>();
         String sql = "SELECT [id]\n"
                 + "      ,[name]\n"
@@ -27,8 +27,12 @@ public class ProductDAO extends DBContext {
                 + "      ,[price]\n"
                 + "      ,[description]\n"
                 + "      ,[categoryId]\n"
-                + "  FROM [dbo].[Product]";
+                + "  FROM [dbo].[Product] ORDER BY id\n"
+                + "OFFSET ? ROW\n"
+                + "FETCH NEXT ? ROWS ONLY";
         statement = getConnection().prepareStatement(sql);
+        statement.setInt(1, (page - 1) * Constant.NUMBER_RECORD_PER_PAGE);
+        statement.setInt(2, Constant.NUMBER_RECORD_PER_PAGE);
         resultSet = statement.executeQuery();
         while (resultSet.next()) {
             int id = resultSet.getInt("id");
@@ -125,14 +129,18 @@ public class ProductDAO extends DBContext {
         return null;
     }
 
-    public List<Product> findByCategory(String categoryName) {
+    public List<Product> findByCategory(String categoryName, int page) {
         List<Product> listProduct = new ArrayList<>();
         String sql = "SELECT * FROM Product p\n"
                 + "join Category c on c.id = p.categoryId\n"
-                + "WHERE C.name = ?";
+                + "WHERE C.name = ? ORDER BY p.id\n"
+                + "OFFSET ? ROWS\n"
+                + "FETCH NEXT ? ROWS ONLY";
         try {
             statement = getConnection().prepareStatement(sql);
             statement.setString(1, categoryName);
+            statement.setInt(2, (page - 1) * Constant.NUMBER_RECORD_PER_PAGE);
+            statement.setInt(3, Constant.NUMBER_RECORD_PER_PAGE);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -159,10 +167,41 @@ public class ProductDAO extends DBContext {
         }
         return null;
     }
+    
+    public int getTotalRecordByCategory(String name) {
+        String sql = "SELECT COUNT(*) AS countRecord FROM Product p\n"
+                + "join Category c on c.id = p.categoryId\n"
+                + "WHERE C.name = ?";
+        try {
+            statement = getConnection().prepareStatement(sql);
+            statement.setString(1, name);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt("countRecord");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 1;
+    }
+
+    public int countTotalrecord(String sql) {
+        int totalRecord = 0;
+        try {
+            statement = getConnection().prepareStatement(sql);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                totalRecord = resultSet.getInt("CountProduct");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return totalRecord;
+    }
 
     public static void main(String[] args) {
         try {
-            for (Product p : new ProductDAO().findAll()) {
+            for (Product p : new ProductDAO().findAll(1)) {
                 System.out.println(p);
             }
         } catch (SQLException ex) {

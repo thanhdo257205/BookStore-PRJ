@@ -648,10 +648,10 @@
                             </div>
                             <div class="page-number">
                                 <ul>
-                                    <li><a href="#" class="active">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
+                                    <c:forEach var="page" begin="1" end="${pageControl.totalpage}">
+                                        <!--                                        <li><a href="#" class="active">1</a></li>-->
+                                        <li><a href="${pageControl.url}page=${page}">${page}</a></li>
+                                        </c:forEach>
                                     <li><a href="#" class="angle"><i class="fa fa-angle-right"></i></a></li>
                                 </ul>
                             </div>
@@ -756,6 +756,16 @@
                     e.preventDefault();
                     let form = this.closest("form");
                     form.submit();
+                });
+
+            }
+
+            let category = document.querySelectorAll(".category-class");
+
+            for (let i = 0; i < category.length; i++) {
+                category[i].addEventListener('click', function () {
+                    let content = category.querySelector("a").dataset.name.trim();
+                    window.location.href = contextPath + "/Home?action=category&name=" + content;
                 });
             }
         </script>

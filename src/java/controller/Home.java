@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Category;
+import model.Constant;
+import model.PageControl;
 import model.Product;
 
 /**
@@ -64,11 +66,13 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PageControl pageControl = new PageControl();
+        final int numberRecordPerPage = Constant.NUMBER_RECORD_PER_PAGE;
         String action = request.getParameter("action");
         request.setAttribute("listCategory", listCategoryAll(request, response));
         if (action == null) {
             try {
-                request.setAttribute("listProduct", listProductAll(request, response));
+                request.setAttribute("listProduct", listProductAll(request, response, pageControl, numberRecordPerPage));
             } catch (SQLException ex) {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -76,29 +80,69 @@ public class Home extends HttpServlet {
             switch (action) {
                 case "category":
                     String name = request.getParameter("name");
-                    request.setAttribute("listProduct", new ProductDAO().findByCategory(name));
+                    int totalPage = new ProductDAO().getTotalRecordByCategory(name);
+                    setPageControl(pageControl, totalPage, request, numberRecordPerPage);
+                    pageControl.setUrl(request.getRequestURL().toString() + "?action=category&name=" + name + "&");
+                    int page = pageControl.getPage();
+                    request.setAttribute("listProduct", new ProductDAO().findByCategory(name, page));
                     break;
                 case "search":
                     String keyword = request.getParameter("keyword");
                     request.setAttribute("listProduct", new ProductDAO().findProductByName(keyword));
+                    setPageControl(pageControl, new ProductDAO().findProductByName(keyword).size(), request, numberRecordPerPage);
+                    pageControl.setUrl(request.getRequestURL().toString() + "?action=search&keyword=" + keyword + "&");
                     break;
                 default:
                     throw new AssertionError();
             }
         }
+        request.setAttribute("pageControl", pageControl);
         request.getRequestDispatcher("view/user/home.jsp").forward(request, response);
     }
-    
-    private List<Product> listProductAll(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        List<Product> listProduct = new ProductDAO().findAll();
+
+    private List<Product> listProductAll(HttpServletRequest request, HttpServletResponse response, PageControl pageControl, int numberRecordPerPage) throws SQLException {
+        int page;
+        try {
+            page = Integer.parseInt(request.getParameter("page"));
+            if (page <= 0) {
+                page = 1;
+            }
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        List<Product> listProduct = new ProductDAO().findAll(page);
+        int totalRecord = new ProductDAO().countTotalrecord("SELECT COUNT(*) AS CountProduct FROM Product");
+        int totalPage = (totalRecord % numberRecordPerPage) == 0 ? totalRecord / numberRecordPerPage : (totalRecord / numberRecordPerPage) + 1;
+        pageControl.setPage(page);
+        pageControl.setTotalRecord(totalRecord);
+        pageControl.setTotalpage(totalPage);
+        String url = request.getRequestURL().toString();
+        pageControl.setUrl(url + "?");
         return listProduct;
     }
-    
+
+    private void setPageControl(PageControl pageControl, int totalPagee, HttpServletRequest request, int numberRecordPerPage) {
+        int page;
+        try {
+            page = Integer.parseInt(request.getParameter("page"));
+            if (page <= 0) {
+                page = 1;
+            }
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        int totalRecord = totalPagee;
+        int totalPage = (totalRecord % numberRecordPerPage) == 0 ? totalRecord / numberRecordPerPage : (totalRecord / numberRecordPerPage) + 1;
+        pageControl.setPage(page);
+        pageControl.setTotalRecord(totalRecord);
+        pageControl.setTotalpage(totalPage);
+    }
+
     private Map<String, Integer> listCategoryAll(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Integer> listCategory = new CategoryDAO().findCategoryQuantity();
         return listCategory;
     }
-    
+
     private List<Category> getCategory() {
         return new CategoryDAO().findAll();
     }

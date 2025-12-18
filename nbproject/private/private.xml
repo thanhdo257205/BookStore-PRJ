@@ -3,53 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/flag/1.jpg</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/flex/1.jpg</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/favicon.png</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/bootstrap.min.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/Home.java</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/jquery.flexslider.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/plugins.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/2.png</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/main.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/waypoints.min.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/ProductDAO.java</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/view/user/home.jsp</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/logo/3.png</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/flex/2.jpg</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/view/common/main-menu-area-start.jsp</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/view/common/header-mid-area.jsp</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/1.png</file>
-            <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Product.java</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/jquery.parallax-1.1.3.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/chosen.jquery.min.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/owl.carousel.min.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/icon-img/service-1.png</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/logo/4.png</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/css/style.css</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/user/book.jsp</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/css/animate.css</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/BookInfomation.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/header-top-area.jsp</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/3.jpg</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/index.html</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/CategoryDAO.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/WEB-INF/web.xml</file>
+            <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/Home.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Category.java</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/logo/5.png</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/footer-area-start.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/mobile-menu-area-start.jsp</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/icon-img/select.png</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/ajax-mail.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/flex/5.jpg</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/icon-img/select-2.png</file>
+            <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/ProductDAO.java</file>
+            <file>file:/D:/PRJ_Practical/BookStore/web/view/user/home.jsp</file>
+            <file>file:/D:/PRJ_Practical/BookStore/web/view/common/main-menu-area-start.jsp</file>
+            <file>file:/D:/PRJ_Practical/BookStore/web/view/common/header-mid-area.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/user/product-details.jsp</file>
-            <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/DBContext.java</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/logo/logo.png</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/jquery.countdown.min.js</file>
+            <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Product.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/js/myscript.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/js/wow.min.js</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/img/flag/2.jpg</file>
+            <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/DBContext.java</file>
         </group>
     </open-files>
 </project-private>

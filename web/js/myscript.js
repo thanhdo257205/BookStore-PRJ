@@ -27,17 +27,6 @@ for (let i = 0; i < bookInfomation.length; i++) {
     });
 }
 
-let category = document.querySelectorAll(".category-class");
-
-for (let i = 0; i < category.length; i++) {
-    category[i].addEventListener('click', function (e) {
-        e.preventDefault();
-        let aTag = this.querySelector("a");
-        let nameCategory = aTag.dataset.name;
-        console.log(nameCategory);
-        window.location.href = contextPath + '/BookInfomation';
-    });
-}
 
 
 
