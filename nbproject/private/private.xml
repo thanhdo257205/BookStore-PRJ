@@ -6,17 +6,19 @@
             <file>file:/D:/PRJ_Practical/BookStore/web/view/user/book.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/BookInfomation.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/header-top-area.jsp</file>
+            <file>file:/D:/PRJ_Practical/BookStore/src/java/model/PageControl.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/CategoryDAO.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/WEB-INF/web.xml</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/Home.java</file>
+            <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Constant.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Category.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/footer-area-start.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/mobile-menu-area-start.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/ProductDAO.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/user/home.jsp</file>
+            <file>file:/D:/PRJ_Practical/BookStore/web/js/jquery.meanmenu.js</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/main-menu-area-start.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/header-mid-area.jsp</file>
-            <file>file:/D:/PRJ_Practical/BookStore/web/view/user/product-details.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Product.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/js/myscript.js</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/DBContext.java</file>
