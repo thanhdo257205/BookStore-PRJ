@@ -19,7 +19,7 @@
             </div>
             <div class="col-lg-6 col-md-4 col-12">
                 <div class="logo-area text-center logo-xs-mrg">
-                    <a href="Home" id="logo-mid"><img src="${pageContext.request.contextPath}/img/logo/2.png" alt="logo" /></a>
+                    <a href="${pageContext.request.contextPath}/Home" id="logo-mid"><img src="${pageContext.request.contextPath}/img/logo/2.png" alt="logo" /></a>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-12">

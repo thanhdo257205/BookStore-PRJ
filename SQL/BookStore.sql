@@ -215,3 +215,24 @@ INSERT INTO Product (name, image, quantity, price, description, categoryId) VALU
 (N'Yoga Mat Carry Strap', '5.jpg', 160, 15.00, N'Dây mang thảm yoga.', 8),
 (N'Outdoor Neck Gaiter', '3.jpg', 140, 18.00, N'Khăn ống cổ chống nắng.', 8),
 (N'Light Fitness Hoodie', '5.jpg', 95, 57.00, N'Áo hoodie thể thao nhẹ.', 8);
+
+
+
+INSERT INTO [dbo].[Product]
+           ([name]
+           ,[image]
+           ,[quantity]
+           ,[price]
+           ,[description]
+           ,[categoryId])
+     VALUES
+           (<name, nvarchar(150),>
+           ,<image, nvarchar(max),>
+           ,<quantity, int,>
+           ,<price, float,>
+           ,<description, nvarchar(max),>
+           ,<categoryId, int,>)
+
+
+
+

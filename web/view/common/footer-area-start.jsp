@@ -88,10 +88,8 @@
                         <div class="footer-contact">
                             <p class="adress">
                                 <span>My Company</span>
-                                Your address goes here.
                             </p>
-                            <p><span>Call us now:</span> 0123456789</p>
-                            <p><span>Email:</span> demo@example.com</p>
+                            <p><span>Email:</span> dothanh2572005@gmail.com</p>
                         </div>
                     </div>
                 </div>

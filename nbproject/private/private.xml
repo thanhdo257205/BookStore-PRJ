@@ -3,15 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/PRJ_Practical/BookStore/web/view/admin/addProduct.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/user/book.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/BookInfomation.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/header-top-area.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/model/PageControl.java</file>
+            <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/DashboardServlet.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/CategoryDAO.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/WEB-INF/web.xml</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/Home.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Constant.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Category.java</file>
+            <file>file:/D:/PRJ_Practical/BookStore/web/view/admin/dashboard.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/footer-area-start.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/view/common/mobile-menu-area-start.jsp</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/ProductDAO.java</file>
@@ -22,6 +25,8 @@
             <file>file:/D:/PRJ_Practical/BookStore/src/java/model/Product.java</file>
             <file>file:/D:/PRJ_Practical/BookStore/web/js/myscript.js</file>
             <file>file:/D:/PRJ_Practical/BookStore/src/java/dal/DBContext.java</file>
+            <file>file:/D:/PRJ_Practical/BookStore/web/view/admin/navbar.jsp</file>
+            <file>file:/D:/PRJ_Practical/BookStore/src/java/controller/admin/ProductAdminServlet.java</file>
         </group>
     </open-files>
 </project-private>

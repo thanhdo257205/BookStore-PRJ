@@ -57,6 +57,41 @@ public class ProductDAO extends DBContext {
         return list;
     }
 
+    public List<Product> findAllNoPagination() throws SQLException {
+        List<Product> list = new ArrayList<>();
+        String sql = "SELECT [id]\n"
+                + "      ,[name]\n"
+                + "      ,[image]\n"
+                + "      ,[quantity]\n"
+                + "      ,[price]\n"
+                + "      ,[description]\n"
+                + "      ,[categoryId]\n"
+                + "  FROM [dbo].[Product]\n";
+        statement = getConnection().prepareStatement(sql);
+        resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            String image = resultSet.getString("image");
+            int quantity = resultSet.getInt("quantity");
+            float price = resultSet.getFloat("price");
+            String des = resultSet.getString("description");
+            int categoryId = resultSet.getInt("categoryId");
+
+            Product p = Product.builder()
+                    .id(id)
+                    .name(name)
+                    .image(image)
+                    .quantity(quantity)
+                    .description(des)
+                    .categoryId(categoryId)
+                    .price(price)
+                    .build();
+            list.add(p);
+        }
+        return list;
+    }
+
     public Product findById(int id) {
         String sql = "SELECT [id]\n"
                 + "      ,[name]\n"
@@ -167,7 +202,7 @@ public class ProductDAO extends DBContext {
         }
         return null;
     }
-    
+
     public int getTotalRecordByCategory(String name) {
         String sql = "SELECT COUNT(*) AS countRecord FROM Product p\n"
                 + "join Category c on c.id = p.categoryId\n"
@@ -204,6 +239,47 @@ public class ProductDAO extends DBContext {
             for (Product p : new ProductDAO().findAll(1)) {
                 System.out.println(p);
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void insertProduct(Product p) {
+        String sql = "INSERT INTO [dbo].[Product]\n"
+                + "           ([name]\n"
+                + "           ,[image]\n"
+                + "           ,[quantity]\n"
+                + "           ,[price]\n"
+                + "           ,[description]\n"
+                + "           ,[categoryId])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?)";
+        try {
+            statement = getConnection().prepareStatement(sql);
+            statement.setObject(1, p.getName());
+            statement.setObject(2, p.getImage());
+            statement.setObject(3, p.getQuantity());
+            statement.setObject(4, p.getPrice());
+            statement.setObject(5, p.getDescription());
+            statement.setObject(6, p.getCategoryId());
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteProduct(int id) {
+        String sql = "DELETE FROM [dbo].[Product]\n"
+                + "      WHERE id = ?";
+        try {
+            statement = getConnection().prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

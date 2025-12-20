@@ -24,6 +24,11 @@
 
         <!-- Page level plugin CSS-->
         <link href="${pageContext.request.contextPath}/css/admin/dataTables.bootstrap4.css" rel="stylesheet">
+        <style>
+            .error{
+                color:red;
+            }
+        </style>
 
         <!-- Custom styles for this template-->
         <link href="${pageContext.request.contextPath}/css/admin/sb-admin.css" rel="stylesheet">
@@ -58,230 +63,202 @@
             </form>
 
             <!-- Navbar -->
-            <ul class="navbar-nav ml-auto ml-md-0">
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bell fa-fw"></i>
-                        <span class="badge badge-danger">9+</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-envelope fa-fw"></i>
-                        <span class="badge badge-danger">7</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user-circle fa-fw"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="#">Activity Log</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                    </div>
-                </li>
-            </ul>
+            <jsp:include page="/view/admin/navbar.jsp"></jsp:include>
 
-        </nav>
+            </nav>
 
-        <div id="wrapper">
+            <div id="wrapper">
 
-            <!-- Sidebar -->
-            <ul class="sidebar navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Pages</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                        <h6 class="dropdown-header">Login Screens:</h6>
-                        <a class="dropdown-item" href="login.html">Login</a>
-                        <a class="dropdown-item" href="register.html">Register</a>
-                        <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="dropdown-divider"></div>
-                        <h6 class="dropdown-header">Other Pages:</h6>
-                        <a class="dropdown-item" href="404.html">404 Page</a>
-                        <a class="dropdown-item" href="blank.html">Blank Page</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="tables.html">
-                        <i class="fas fa-fw fa-table"></i>
-                        <span>Tables</span></a>
-                </li>
-            </ul>
+                <!-- Sidebar -->
+                <ul class="sidebar navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-fw fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-fw fa-folder"></i>
+                            <span>Pages</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                            <h6 class="dropdown-header">Login Screens:</h6>
+                            <a class="dropdown-item" href="login.html">Login</a>
+                            <a class="dropdown-item" href="register.html">Register</a>
+                            <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Other Pages:</h6>
+                            <a class="dropdown-item" href="404.html">404 Page</a>
+                            <a class="dropdown-item" href="blank.html">Blank Page</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="charts.html">
+                            <i class="fas fa-fw fa-chart-area"></i>
+                            <span>Charts</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tables.html">
+                            <i class="fas fa-fw fa-table"></i>
+                            <span>Tables</span></a>
+                    </li>
+                </ul>
 
-            <div id="content-wrapper">
+                <div id="content-wrapper">
 
-                <div class="container-fluid">
+                    <div class="container-fluid">
 
-                    <!-- Breadcrumbs-->
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="#">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active">Overview</li>
-                    </ol>
+                        <!-- Breadcrumbs-->
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="#">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item active">Overview</li>
+                            <li class="breadcrumb-item ml-auto">
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
+                                    Add Product
+                                </button>
+                            </li>
+                        </ol>
 
-                    <!-- Icon Cards-->
-                    <div class="row">
-                        <div class="col-xl-3 col-sm-6 mb-3">
-                            <div class="card text-white bg-primary o-hidden h-100">
-                                <div class="card-body">
-                                    <div class="card-body-icon">
-                                        <i class="fas fa-fw fa-comments"></i>
+                        <!-- Icon Cards-->
+                        <div class="row">
+                            <div class="col-xl-3 col-sm-6 mb-3">
+                                <div class="card text-white bg-primary o-hidden h-100">
+                                    <div class="card-body">
+                                        <div class="card-body-icon">
+                                            <i class="fas fa-fw fa-comments"></i>
+                                        </div>
+                                        <div class="mr-5">26 New Messages!</div>
                                     </div>
-                                    <div class="mr-5">26 New Messages!</div>
+                                    <a class="card-footer text-white clearfix small z-1" href="#">
+                                        <span class="float-left">View Details</span>
+                                        <span class="float-right">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
                                 </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                    </span>
-                                </a>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 mb-3">
+                                <div class="card text-white bg-warning o-hidden h-100">
+                                    <div class="card-body">
+                                        <div class="card-body-icon">
+                                            <i class="fas fa-fw fa-list"></i>
+                                        </div>
+                                        <div class="mr-5">11 New Tasks!</div>
+                                    </div>
+                                    <a class="card-footer text-white clearfix small z-1" href="#">
+                                        <span class="float-left">View Details</span>
+                                        <span class="float-right">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 mb-3">
+                                <div class="card text-white bg-success o-hidden h-100">
+                                    <div class="card-body">
+                                        <div class="card-body-icon">
+                                            <i class="fas fa-fw fa-shopping-cart"></i>
+                                        </div>
+                                        <div class="mr-5">123 New Orders!</div>
+                                    </div>
+                                    <a class="card-footer text-white clearfix small z-1" href="#">
+                                        <span class="float-left">View Details</span>
+                                        <span class="float-right">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-sm-6 mb-3">
+                                <div class="card text-white bg-danger o-hidden h-100">
+                                    <div class="card-body">
+                                        <div class="card-body-icon">
+                                            <i class="fas fa-fw fa-life-ring"></i>
+                                        </div>
+                                        <div class="mr-5">13 New Tickets!</div>
+                                    </div>
+                                    <a class="card-footer text-white clearfix small z-1" href="#">
+                                        <span class="float-left">View Details</span>
+                                        <span class="float-right">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-sm-6 mb-3">
-                            <div class="card text-white bg-warning o-hidden h-100">
-                                <div class="card-body">
-                                    <div class="card-body-icon">
-                                        <i class="fas fa-fw fa-list"></i>
-                                    </div>
-                                    <div class="mr-5">11 New Tasks!</div>
-                                </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6 mb-3">
-                            <div class="card text-white bg-success o-hidden h-100">
-                                <div class="card-body">
-                                    <div class="card-body-icon">
-                                        <i class="fas fa-fw fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="mr-5">123 New Orders!</div>
-                                </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6 mb-3">
-                            <div class="card text-white bg-danger o-hidden h-100">
-                                <div class="card-body">
-                                    <div class="card-body-icon">
-                                        <i class="fas fa-fw fa-life-ring"></i>
-                                    </div>
-                                    <div class="mr-5">13 New Tickets!</div>
-                                </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <span class="float-left">View Details</span>
-                                    <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Area Chart Example-->
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <i class="fas fa-chart-area"></i>
-                            Area Chart Example
+                        <!-- Area Chart Example-->
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <i class="fas fa-chart-area"></i>
+                                Area Chart Example
+                            </div>
+                            <div class="card-body">
+                                <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                            </div>
+                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
                         </div>
-                        <div class="card-body">
-                            <canvas id="myAreaChart" width="100%" height="30"></canvas>
-                        </div>
-                        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                    </div>
 
-                    <!-- DataTables Example -->
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <i class="fas fa-table"></i>
-                            Data Table Example
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>NAME</th>
-                                            <th>IMAGE</th>
-                                            <th>QUANTITY</th>
-                                            <th>PRICE</th>
-                                            <th>DESCRIPTION</th>
-                                            <th>CATEGORY ID</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>NAME</th>
-                                            <th>IMAGE</th>
-                                            <th>QUANTITY</th>
-                                            <th>PRICE</th>
-                                            <th>DESCRIPTION</th>
-                                            <th>CATEGORY ID</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
+                        <!-- DataTables Example -->
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <i class="fas fa-table"></i>
+                                Data Table Example
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>NAME</th>
+                                                <th>IMAGE</th>
+                                                <th>QUANTITY</th>
+                                                <th>PRICE</th>
+                                                <th>DESCRIPTION</th>
+                                                <th>CATEGORY ID</th>
+                                                <th>DELETE/EDIT</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>NAME</th>
+                                                <th>IMAGE</th>
+                                                <th>QUANTITY</th>
+                                                <th>PRICE</th>
+                                                <th>DESCRIPTION</th>
+                                                <th>CATEGORY ID</th>
+                                                <th>DELETE/EDIT</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
                                         <c:forEach var="product" items="${listProduct}">
-                                        <tr>
-                                            <td>${product.id}</td>
-                                            <td>${product.name}</td>
-                                            <td>
-                                                <img src="${pageContext.request.contextPath}/img/product/${product.image}" width="100" height="100" alt="${product.name}">
-                                            </td>
-                                            <td>${product.quantity}</td>
-                                            <td>${product.price}$</td>
-                                            <td>${product.description}</td>
-                                            <td>
-                                                <c:forEach var="category" items="${listCategory}">
-                                                    <c:if test="${category.id == product.categoryId}">
-                                                        ${category.name}
-                                                    </c:if>
-                                                </c:forEach>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>${product.id}</td>
+                                                <td>${product.name}</td>
+                                                <td>
+                                                    <img src="${pageContext.request.contextPath}/img/product/${product.image}" width="100" height="100" alt="${product.name}">
+                                                </td>
+                                                <td>${product.quantity}</td>
+                                                <td>${product.price}$</td>
+                                                <td>${product.description}</td>
+                                                <td>
+                                                    <c:forEach var="category" items="${listCategory}">
+                                                        <c:if test="${category.id == product.categoryId}">
+                                                            ${category.name}
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger delete-product"  data-toggle="modal" data-target="#delete-product-modal">DELETE</button>
+                                                    <button type="button" class="btn btn-secondary">EDIT</button>
+                                                </td>
+                                            </tr>
                                         </c:forEach>
                                     </tbody>
                                 </table>
@@ -332,9 +309,19 @@
                 </div>
             </div>
         </div>
-
-        <!-- Bootstrap core JavaScript-->
-        <script src="${pageContext.request.contextPath}/js/admin/jquery.min.js"></script>
+        <jsp:include page="addProduct.jsp"></jsp:include>
+        <jsp:include page="/view/admin/deleteModal.jsp"></jsp:include>
+            <!-- Bootstrap core JavaScript-->
+            <script>
+               let clickDelete = document.querySelectorAll(".delete-product");
+               for (let i = 0; i < clickDelete.length; i++) {
+                   clickDelete[i].addEventListener('click', function () {
+                       let id = this.closest("tr").querySelector("td").textContent.trim();
+                       document.querySelector("#idDeleteInput").value = id;
+                   });
+               }
+            </script>
+            <script src="${pageContext.request.contextPath}/js/admin/jquery.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/admin/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
@@ -355,7 +342,7 @@
         <script src="${pageContext.request.contextPath}/js/admin/chart-area-demo.js"></script>
         <script src="${pageContext.request.contextPath}/js/admin/colReorder-dataTables-min.js"></script>
         <script src="${pageContext.request.contextPath}/js/admin/colReorder-bootstrap4-min.js"></script>
-
+        
 
     </body>
 

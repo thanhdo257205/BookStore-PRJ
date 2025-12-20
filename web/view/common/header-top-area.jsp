@@ -4,6 +4,7 @@
     Author     : dotha
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="header-top-area">
     <div class="container">
@@ -33,9 +34,16 @@
             <div class="col-lg-6 col-md-6 col-12">
                 <div class="account-area text-end">
                     <ul>
-                        <li><a href="my-account.html">My Account</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
-                        <li><a href="login.html">Sign in</a></li>
+                        <c:choose>
+                            <c:when test="${sessionScope.account != null}">
+                                <li><a href="my-account.html">${sessionScope.account.username}</a></li>
+                                <li><a href="${pageContext.request.contextPath}/Login?action=logout">Log Out</a></li>
+                                </c:when>
+                                <c:otherwise>
+                                <li><a href="${pageContext.request.contextPath}/Login?action=register">Register</a></li>
+                                <li><a href="${pageContext.request.contextPath}/Login">Sign in</a></li>
+                                </c:otherwise>
+                            </c:choose>
                     </ul>
                 </div>
             </div>
