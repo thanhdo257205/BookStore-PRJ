@@ -36,7 +36,7 @@
                     <ul>
                         <c:choose>
                             <c:when test="${sessionScope.account != null}">
-                                <li><a href="my-account.html">${sessionScope.account.username}</a></li>
+                                <li><a href="${pageContext.request.contextPath}/admin/DashboardServlet">${sessionScope.account.username}</a></li>
                                 <li><a href="${pageContext.request.contextPath}/Login?action=logout">Log Out</a></li>
                                 </c:when>
                                 <c:otherwise>

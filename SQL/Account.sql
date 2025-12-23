@@ -15,6 +15,32 @@ CREATE TABLE Account (
 	CONSTRAINT FK_ACCOUNT_ROLE FOREIGN KEY (roleid) REFERENCES Role(id)
 )
 
+CREATE TABLE Cart (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    accountId INT NOT NULL,
+    createdAt DATETIME DEFAULT GETDATE(),
+
+    CONSTRAINT FK_Cart_Account
+        FOREIGN KEY (accountId) REFERENCES Account(id)
+);
+
+CREATE TABLE CartItem (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    cartId INT NOT NULL,
+    productId INT NOT NULL,
+    quantity INT NOT NULL,
+
+    CONSTRAINT FK_CartItem_Cart
+        FOREIGN KEY (cartId) REFERENCES Cart(id),
+
+    CONSTRAINT FK_CartItem_Product
+        FOREIGN KEY (productId) REFERENCES Product(id),
+
+    CONSTRAINT UQ_Cart_Product UNIQUE (cartId, productId)
+);
+
+
+
 INSERT INTO Role (name) VALUES
 (N'Admin'),
 (N'Manager'),
@@ -51,4 +77,43 @@ GO
 SELECT * FROM Account WHERE username = 'user01'
 
 INSERT INTO Account(username, password) VALUES (?, ?)
+
+SELECT * FROM Cart WHERE accountId = ?
+
+SELECT * FROM CartItem WHERE cartId = ?
+
+
+
+INSERT INTO [dbo].[Cart]
+           ([accountId])
+     VALUES
+           (?)
+INSERT INTO [dbo].[CartItem]
+           ([cartId]
+           ,[productId]
+           ,[quantity])
+     VALUES
+           (<cartId, int,>
+           ,<productId, int,>
+           ,<quantity, int,>)
+
+
+select * from CartItem
+
+insert into CartItem values (1, 12, 1)
+
+SELECT * FROM CartItem WHERE cartId = ? AND productId = ?
+
+
+UPDATE [dbo].[CartItem]
+   SET [quantity] = (SELECT quantity FROM CartItem WHERE cartId = ? AND productId = ?) + ?
+ WHERE cartId = ? and productId = ?
+
+ select * from Product
+
+
+
+DELETE FROM [dbo].[CartItem]
+      WHERE cartId = ? AND productId = ?
+
 

@@ -122,13 +122,16 @@ public class LoginServlet extends HttpServlet {
         if (a == null) {
             request.setAttribute("error", "UserName or Password is incorrect!");
             request.getRequestDispatcher("/view/login/login.jsp").forward(request, response);
+        } else if (a != null && request.getSession().getAttribute("afterLoginURL") != null) {
+            request.getSession().setAttribute("account", a);
+            response.sendRedirect((String) request.getSession().getAttribute("afterLoginURL"));
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("account", a);
             response.sendRedirect(request.getContextPath() + "/Home");
         }
     }
-    
+
     private void logoutProcess(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().removeAttribute("account");
         response.sendRedirect(request.getContextPath() + "/Home");
@@ -146,5 +149,5 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/Home");
         }
     }
-    
+
 }

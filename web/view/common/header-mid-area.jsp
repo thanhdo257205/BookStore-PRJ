@@ -58,7 +58,7 @@
                                     <h5>Total <span>£12.00</span></h5>
                                 </div>
                                 <div class="cart-bottom">
-                                    <a class="view-cart" href="cart.html">view cart</a>
+                                    <a class="view-cart" href="${pageContext.request.contextPath}/Payment?action=viewcard">view cart</a>
                                     <a href="checkout.html">Check out</a>
                                 </div>
                             </div>

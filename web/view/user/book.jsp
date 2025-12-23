@@ -8,7 +8,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
 
-    
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -132,11 +132,13 @@
                                             </div>
                                         </div>
                                         <div class="product-add-form">
-                                            <form action="#">
+                                            <form action="${pageContext.request.contextPath}/Payment" method="GET">
+                                                <input type="hidden" name="action" value="add-product">
+                                                <input type="hidden" name="id" value="${product.id}">
                                                 <div class="quality-button">
-                                                    <input class="qty" type="number" value="1">
+                                                    <input class="qty" type="number" value="1" name="quantity">
                                                 </div>
-                                                <a href="#">Add to cart</a>
+                                                <a id="add-to-cart">Add to cart</a>
                                             </form>
                                         </div>
                                         <div class="product-social-links">
@@ -741,6 +743,13 @@
 
         <!-- all js here -->
         <!-- jquery latest version -->
+        <script>
+            let addToCart = document.querySelector("#add-to-cart");
+            addToCart.addEventListener('click', function () {
+                let form = addToCart.closest("form");
+                form.submit();
+            });
+        </script>
         <script src="${pageContext.request.contextPath}/js/vendor/jquery-1.12.4.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/vendor/modernizr-2.8.3.min.js"></script>v
 
@@ -770,5 +779,5 @@
         <script src="${pageContext.request.contextPath}/js/main.js"></script>
     </body>
 
-    
+
 </html>
